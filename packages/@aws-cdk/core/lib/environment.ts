@@ -29,4 +29,7 @@ export interface Environment {
    * @default Aws.region which means that the stack will be region-agnostic.
    */
   readonly region?: string;
+
+  readonly availabilityZones?: string[];
+
 }

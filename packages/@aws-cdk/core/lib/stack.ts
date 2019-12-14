@@ -238,11 +238,12 @@ export class Stack extends Construct implements ITaggable {
 
     this._logicalIds = new LogicalIDs();
 
-    const { account, region, environment } = this.parseEnvironment(props.env);
+    const { account, region, environment, availabilityZones } = this.parseEnvironment(props.env);
 
     this.account = account;
     this.region = region;
     this.environment = environment;
+    this._availabilityZones = availabilityZones;
 
     if (props.description !== undefined) {
       // Max length 1024 bytes
@@ -471,6 +472,8 @@ export class Stack extends Construct implements ITaggable {
     return Arn.parse(arn, sepIfToken, hasName);
   }
 
+  public readonly availabilityZones:string[];
+
   /**
    * Returnst the list of AZs that are availability in the AWS environment
    * (account/region) associated with this stack.
@@ -484,11 +487,12 @@ export class Stack extends Construct implements ITaggable {
    * reports them as missing, and let the CLI resolve them by calling EC2
    * `DescribeAvailabilityZones` on the target environment.
    */
-  public get availabilityZones(): string[] {
+  public resolveAvailabilityZones(account:string,region:string): string[] {
+ 
     // if account/region are tokens, we can't obtain AZs through the context
     // provider, so we fallback to use Fn::GetAZs. the current lowest common
     // denominator is 2 AZs across all AWS regions.
-    const agnostic = Token.isUnresolved(this.account) || Token.isUnresolved(this.region);
+    const agnostic = Token.isUnresolved(account) || Token.isUnresolved(region);
     if (agnostic) {
       return this.node.tryGetContext(cxapi.AVAILABILITY_ZONE_FALLBACK_CONTEXT_KEY) || [
         Fn.select(0, Fn.getAzs()),
@@ -933,6 +937,7 @@ export class Stack extends Construct implements ITaggable {
     const account = env.account || Aws.ACCOUNT_ID;
     const region  = env.region  || Aws.REGION;
 
+
     // this is the "aws://" env specification that will be written to the cloud assembly
     // manifest. it will use "unknown-account" and "unknown-region" to indicate
     // environment-agnosticness.
@@ -941,7 +946,8 @@ export class Stack extends Construct implements ITaggable {
 
     return {
       account, region,
-      environment: EnvironmentUtils.format(envAccount, envRegion)
+      environment: EnvironmentUtils.format(envAccount, envRegion),
+      availabilityZones: env.availabilityZones || this.resolveAvailabilityZones(account,region)
     };
   }
 
