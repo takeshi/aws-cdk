@@ -11,7 +11,12 @@
         "namespace": "Amazon.CDK.AWS.AccessAnalyzer",
         "packageId": "Amazon.CDK.AWS.AccessAnalyzer",
         "signAssembly": true,
+<<<<<<< HEAD
         "assemblyOriginatorKeyFile": "../../key.snk"
+=======
+        "assemblyOriginatorKeyFile": "../../key.snk",
+        "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-256-dark.png"
+>>>>>>> 58e67e6185fae008d797c68417f1653b1ecee2d6
       },
       "java": {
         "package": "software.amazon.awscdk.services.accessanalyzer",
@@ -21,14 +26,24 @@
         }
       },
       "python": {
+<<<<<<< HEAD
         "distName": "aws-cdk.accessanalyzer",
         "module": "aws_cdk.accessanalyzer"
+=======
+        "distName": "aws-cdk.aws-accessanalyzer",
+        "module": "aws_cdk.aws_accessanalyzer"
+>>>>>>> 58e67e6185fae008d797c68417f1653b1ecee2d6
       }
     }
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "https://github.com/aws/aws-cdk.git"
+=======
+    "url": "https://github.com/aws/aws-cdk.git",
+    "directory": "packages/@aws-cdk/aws-accessanalyzer"
+>>>>>>> 58e67e6185fae008d797c68417f1653b1ecee2d6
   },
   "homepage": "https://github.com/aws/aws-cdk",
   "scripts": {
@@ -40,7 +55,14 @@
     "pkglint": "pkglint -f",
     "test": "cdk-test",
     "watch": "cdk-watch",
+<<<<<<< HEAD
     "cfn2ts": "cfn2ts"
+=======
+    "cfn2ts": "cfn2ts",
+    "compat": "cdk-compat",
+    "build+test": "npm run build && npm test",
+    "build+test+package": "npm run build+test && npm run package"
+>>>>>>> 58e67e6185fae008d797c68417f1653b1ecee2d6
   },
   "cdk-build": {
     "cloudformation": "AWS::AccessAnalyzer"
@@ -57,6 +79,7 @@
     "url": "https://aws.amazon.com",
     "organization": true
   },
+<<<<<<< HEAD
   "license": "Apache-2.0",
   "devDependencies": {
     "@aws-cdk/assert": "^1.18.0",
@@ -73,4 +96,34 @@
   "engines": {
     "node": ">= 10.3.0"
   }
+=======
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 60,
+        "statements": 80
+      }
+    }
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@aws-cdk/assert": "1.18.0",
+    "cdk-build-tools": "1.18.0",
+    "cfn2ts": "1.18.0",
+    "pkglint": "1.18.0"
+  },
+  "dependencies": {
+    "@aws-cdk/core": "1.18.0"
+  },
+  "peerDependencies": {
+    "@aws-cdk/core": "1.18.0"
+  },
+  "engines": {
+    "node": ">= 10.3.0"
+  },
+  "stability": "experimental"
+>>>>>>> 58e67e6185fae008d797c68417f1653b1ecee2d6
 }

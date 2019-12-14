@@ -186,7 +186,11 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
+<<<<<<< HEAD
    Copyright 2018-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+=======
+   Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+>>>>>>> 58e67e6185fae008d797c68417f1653b1ecee2d6
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

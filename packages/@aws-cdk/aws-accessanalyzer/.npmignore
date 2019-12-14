@@ -14,4 +14,11 @@ coverage
 dist
 .LAST_BUILD
 .LAST_PACKAGE
+<<<<<<< HEAD
 .jsii
+=======
+
+*.tsbuildinfo
+tsconfig.json
+!.jsii
+>>>>>>> 58e67e6185fae008d797c68417f1653b1ecee2d6
